@@ -1,0 +1,20 @@
+{
+    "name": "buchin/madmimi",
+    "description": "",
+    "authors": [
+        {
+            "name": "buchin",
+            "email": "buchin@dropsugar.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "illuminate/support": "4.0.x"
+    },
+    "autoload": {
+        "psr-0": {
+            "Buchin\\Madmimi": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}
