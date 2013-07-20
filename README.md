@@ -2,8 +2,6 @@ Madmimi for Laravel 4
 =====================
 Madmimi is email 
 
-## Installation
-
 ## Quick start
 
 ### Required setup
@@ -34,6 +32,23 @@ At the end of `config/app.php` add `'Confide'    => 'Zizaco\Confide\ConfideFacad
         'App'        => 'Illuminate\Support\Facades\App',
         'Artisan'    => 'Illuminate\Support\Facades\Artisan',
         ...
-        'Madmimi'    => 'Buchin\Madmimi\MadmimiServiceProvider',
+        'Madmimi'    => 'Buchin\Madmimi\Madmimi',
 
     ),
+
+Lets say you want to add confirmed user to list.
+    
+    // routes.php or controller
+    Route::get('user/confirm/{code}', function($code){
+        $user = User::where('confirmation_code', '=', $code)->firstOrFail();
+        Event::fire('user.confirm', $user);
+        
+        //Confirm user here
+    });
+    
+    // listener.php
+    Event::subscribe('user.confirm', function($user){
+        mimi = new Madmimi('email@example.com', 'api_key');
+        $user = array('email' => 'emailaddress@example.com', 'firstName' => 'nicholas', 'lastName' => 'young', 'Music' => 'Rock and roll', 'add_list' => 'Test List 2');
+    	$status = $mimi->addUser($user);
+    });
