@@ -36,6 +36,8 @@ At the end of `config/app.php` add `'Confide'    => 'Zizaco\Confide\ConfideFacad
 
     ),
 
+### Example
+
 Lets say you want to add confirmed user to list.
     
     // routes.php or controller
@@ -49,6 +51,6 @@ Lets say you want to add confirmed user to list.
     // listener.php
     Event::subscribe('user.confirm', function($user){
         mimi = new Madmimi('email@example.com', 'api_key');
-        $user = array('email' => 'emailaddress@example.com', 'firstName' => 'nicholas', 'lastName' => 'young', 'Music' => 'Rock and roll', 'add_list' => 'Test List 2');
+        $user = array('email' => $user->email, 'firstName' => $user->firstname, 'add_list' => 'Test List');
     	$status = $mimi->addUser($user);
     });
